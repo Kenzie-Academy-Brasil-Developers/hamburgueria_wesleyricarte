@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledInput = styled.input`
     height: 40px;
@@ -23,4 +23,8 @@ export const StyledDiv = styled.div`
     background-color: #FFFFFF;
     border: solid 2px var(--grey-20);
     border-radius: 8px;
+
+    @media (max-width: 380px) {
+        width: 300px;
+    }
 `

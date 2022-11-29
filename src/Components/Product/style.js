@@ -4,6 +4,7 @@ export const StyledLi = styled.li`
     display: flex;
     flex-direction: column;
 
+    max-width: 300px;
     height: 346px;
 
     background: #FFFFFF;
@@ -34,6 +35,7 @@ export const StyledBoxInfo = styled.section`
     & > button {
     padding: 0px 20px;
     height: 40px;
+    width: 106px;
 
     background-color: var(--color-primary);
     color: #FFFFFF;

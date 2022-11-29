@@ -6,4 +6,10 @@ export const StyledMain = styled.main`
 
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 1400px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `

@@ -1,24 +1,24 @@
 import { StyledLi, StyledBoxInfo } from "./style";
+import { toast, Toaster } from "react-hot-toast";
 
 const Product = ({ thisProduct, cart, setCart }) => {
 	const addToCart = (thisProduct) => {
-		const productCart = thisProduct;
+		const productCart = { key: thisProduct.id, ...thisProduct };
 
 		const verifyCart = cart.filter(
-			(product) => product.img === thisProduct.id
+			(product) => product.id === thisProduct.id
 		);
-		console.log(verifyCart);
 
 		if (verifyCart.length === 0) {
 			setCart([...cart, productCart]);
-			console.log("adicionadp no carrinho");
+			toast.success("Produto adicionado ao carrinho");
 		} else {
-			console.log("erro ao adicionar no carrinho");
+			toast.error("Produto não adicionado ao carrinho");
 		}
 	};
 
 	return (
-		<StyledLi>
+		<StyledLi key={thisProduct.id}>
 			<div>
 				<img src={thisProduct.img} alt={thisProduct.name} />
 			</div>
@@ -34,6 +34,7 @@ const Product = ({ thisProduct, cart, setCart }) => {
 				<button onClick={() => addToCart(thisProduct)}>
 					Adicionar
 				</button>
+				<Toaster />
 			</StyledBoxInfo>
 		</StyledLi>
 	);

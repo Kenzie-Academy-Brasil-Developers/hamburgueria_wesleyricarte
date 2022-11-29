@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></link>
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -6,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
 
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Inter', sans-serif;
     }
 
     button{

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import api from "../../Services/api.js";
 import Product from "../Product";
-import { StyledUl } from "./style";
+import { StyledSectionProducts, StyledSectionSearch, StyledUl } from "./style";
 
-const ProductsList = ({ search, cart, setCart }) => {
+const ProductsList = ({ search, setSearch, cart, setCart }) => {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
@@ -12,32 +12,40 @@ const ProductsList = ({ search, cart, setCart }) => {
 			.catch((err) => console.error(err));
 	}, []);
 
-	console.log(products);
-
 	return (
-		<StyledUl>
-			{products
-				?.filter((element) => {
-					return (
-						element.name
-							.toLowerCase()
-							.includes(search.toLowerCase()) ||
-						element.category
-							.toLowerCase()
-							.includes(search.toLowerCase())
-					);
-				})
-				.map((element) => {
-					return (
-						<Product
-							thisProduct={element}
-							cart={cart}
-							setCart={setCart}
-							key={element.id}
-						/>
-					);
-				})}
-		</StyledUl>
+		<StyledSectionProducts>
+			{search && (
+				<StyledSectionSearch>
+					<h3>
+						Resultados para: <span>{search}</span>
+					</h3>
+					<button onClick={() => setSearch("")}>Limpar busca</button>
+				</StyledSectionSearch>
+			)}
+			<StyledUl>
+				{products
+					?.filter((element) => {
+						return (
+							element.name
+								.toLowerCase()
+								.includes(search.toLowerCase()) ||
+							element.category
+								.toLowerCase()
+								.includes(search.toLowerCase())
+						);
+					})
+					.map((element) => {
+						return (
+							<Product
+								key={element.id}
+								thisProduct={element}
+								cart={cart}
+								setCart={setCart}
+							/>
+						);
+					})}
+			</StyledUl>
+		</StyledSectionProducts>
 	);
 };
 

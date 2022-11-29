@@ -1,10 +1,16 @@
 import { StyledDiv, StyledDivEmpty } from "./style";
+import { toast, Toaster } from "react-hot-toast";
 
 const CartTotal = ({ cart, setCart }) => {
 	const totalValue = cart.reduce(
 		(accumulator, currentValue) => accumulator + currentValue.price,
 		0
 	);
+
+	const removeAll = () => {
+		setCart([]);
+		toast.success("TODOS OS PRODUTOS REMOVIDOS");
+	};
 
 	return (
 		<>
@@ -19,7 +25,8 @@ const CartTotal = ({ cart, setCart }) => {
 							})}
 						</span>
 					</div>
-					<button onClick={() => setCart([])}>Remover Todos</button>
+					<button onClick={() => removeAll()}>Remover Todos</button>
+					<Toaster />
 				</StyledDiv>
 			) : (
 				<StyledDivEmpty>

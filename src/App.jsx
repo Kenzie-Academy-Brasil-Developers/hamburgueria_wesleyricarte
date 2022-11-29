@@ -8,13 +8,16 @@ function App() {
 	const [cart, setCart] = useState([]);
 	const [search, setSearch] = useState("");
 
-	console.log(cart);
-
 	return (
 		<div className="App">
 			<Header setSearch={setSearch} />
 			<StyledMain>
-				<ProductsList search={search} cart={cart} setCart={setCart} />
+				<ProductsList
+					search={search}
+					setSearch={setSearch}
+					cart={cart}
+					setCart={setCart}
+				/>
 				<Cart cart={cart} setCart={setCart} />
 			</StyledMain>
 		</div>

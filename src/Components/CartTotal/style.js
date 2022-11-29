@@ -9,6 +9,8 @@ export const StyledDiv = styled.div`
     height: 142px;
     padding: 20px 10px;
 
+    border-top: 2px solid var(--grey-20);
+
     & > div {
         display: flex;
         align-items: center;
